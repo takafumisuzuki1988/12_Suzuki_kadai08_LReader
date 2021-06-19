@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+body{
+    text-align: center;
+    background-image: url(../img/backgroundpic.jpg);
+    background-size: cover;
+    font-family: 'Yusei Magic', sans-serif;
+}
+#book_list{
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 20px;
+}
+
+textarea{
+    display: block;
+    font-family: 'Yusei Magic', sans-serif;
+    font-size: 18px;
+}
+input{
+    font-family: 'Yusei Magic', sans-serif;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#main_title{
+    font-size: 40px;
+    font-weight: bold;
+    background-color: #fff;
+    opacity: 0.7;
+    width: 1400px;
+    margin: 30px auto;
+}
+
+#book_list{
+    width: 700px;
+}
+#book_list_btn{
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: 'Yusei Magic', sans-serif;
+    background-color:lightgreen;
+    cursor: pointer;
+}
+
+#book_title{
+    width: 915px;
+}
+
+#input_form{
+    margin: 0 auto;
+    padding: 20px 0 20px 0;
+    display: block;
+    width: 1400px;
+    background-color: aliceblue;
+    opacity: 0.8;
+}
+
+.form_inner{
+    display: flex;
+    flex-wrap: wrap;
+}
+.input_form_each{
+    display: flex;
+}
+.input_form_left{
+    width: 300px;
+    font-size: 20px;
+}
+.input_form_left_title{
+    margin: 5px 0 20px 0;
+    font-size: 25px;
+}
+
+.input_form_left_detail{
+    font-size: 16px;
+    background-color: lightcyan;
+    margin-left: 30px;
+    text-align: left;
+}
+.input_btn{
+    width: 100px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: 'Yusei Magic', sans-serif;
+    background-color:lightgreen;
+    cursor: pointer;
+}
+
+#purpose{
+    margin-bottom: 20px;
+}
+#finding{
+    margin-bottom: 20px;
+}
+#action{
+    margin-bottom: 20px;
+}
+#review1{
+    margin-bottom: 20px;
+}
+
+#send_btn{
+    display: block;
+    font-size: 30px;
+    text-align: center;
+    margin: 20px auto;
+
+}
