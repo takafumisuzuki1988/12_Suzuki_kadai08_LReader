@@ -33,7 +33,8 @@ if($status==false) {
     $view .= "</option>";
     array_push($resultArr,$result);
   }
-  $json .= json_encode($resultArr);
+  $json .= json_encode($resultArr, JSON_UNESCAPED_UNICODE);
+
 }
 
 ?>
@@ -142,7 +143,19 @@ if($status==false) {
 <!-- JQuery -->
 
 <script>
-const data = JSON.parse('<?=$json?>');
+var parseJson = function(jsonString) {
+  var converted = convertNl(jsonString);
+  return JSON.parse(converted);
+};
+
+var convertNl = function(jsonString) {
+  return jsonString
+    .replace(/(\r\n)/g, '\n')
+    .replace(/(\r)/g,   '\n')
+    .replace(/(\n)/g,  '\\n');
+};
+
+const data = parseJson('<?=$json?>');
 console.log(data);
 
 $("#book_list_btn").on("click",function(){    
