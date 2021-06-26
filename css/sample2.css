@@ -31,6 +31,11 @@ input{
     width: 1400px;
     margin: 30px auto;
 }
+#lists{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
 
 #book_list{
     width: 700px;
@@ -43,6 +48,17 @@ input{
     font-family: 'Yusei Magic', sans-serif;
     background-color:lightgreen;
     cursor: pointer;
+}
+#book_update_btn{
+    display: block;
+    width: 100px;
+    height: 35px;
+    margin-left: 20px;
+    font-size: 20px;
+    font-family: 'Yusei Magic', sans-serif;
+    background-color:lightgreen;
+    cursor: pointer;
+    color: #222;
 }
 
 #book_title{

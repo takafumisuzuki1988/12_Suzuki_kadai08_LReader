@@ -4,19 +4,33 @@ require_once('funcs.php');
 
 //1.  DB接続します
 try {
+  //localhost用  
+    $db_name = "tk_db";
+    $db_id = "root";
+    $db_pw = "root";
+    $db_host = "localhost";
+    $db_table = "tk_an_table";
+
+    //sakura server用（gitにアップするときは削除する！）
+    // $db_name = "limealpaca16_test";
+    // $db_id = "limealpaca16";
+    // $db_pw = "milsakura1229";
+    // $db_host = "mysql57.limealpaca16.sakura.ne.jp";
+    // $db_table = "tk_table_1";
+
   //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=tk_db;charset=utf8;host=localhost','root','root');
+  $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host,$db_id,$db_pw);
 } catch (PDOException $e) {
   exit('DBConnectError:'.$e->getMessage());
 }
 
 //２．SQL文を用意(データ取得：SELECT)
-$stmt = $pdo->prepare("SELECT * FROM tk_an_table");
+$stmt = $pdo->prepare("SELECT * FROM $db_table");
 
 //3. 実行
 $status = $stmt->execute();
 
-//4．データ表示「質問」取得の時点で指定するのか、表示の時点で指定するのか？
+//4．データ表示
 $view="";
 $resultArr = [];
 if($status==false) {
@@ -57,10 +71,13 @@ if($status==false) {
         <div>
             <p id="main_title">L/Reader ～読むだけじゃ終われない～</p>
         </div>
-        <select id="book_list">
-            <?= $view ?>
-        </select>
-        <button id="book_list_btn">見る </button>
+        <div id="lists">
+            <select id="book_list">
+                <?= $view ?>
+            </select>
+            <button id="book_list_btn">見る </button>
+            <a href="select.php"id="book_update_btn">一覧へ</a>
+        </div>
     </header>
     <form method="post" action="insert.php">
         <dl id="input_form">

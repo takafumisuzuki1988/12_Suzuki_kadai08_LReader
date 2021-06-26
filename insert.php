@@ -11,8 +11,22 @@ $review2 = $_POST["review2"];
 
 // 2. DB接続します（データベース以外はワンパターン）
 try {
-  //デフォルトPassword:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname=tk_db;charset=utf8;host=localhost','root','root');
+    //localhost用  
+    $db_name = "tk_db";
+    $db_id = "root";
+    $db_pw = "root";
+    $db_host = "localhost";
+    $db_table = "tk_an_table";
+
+    //sakura server用（gitにアップするときは削除する！）
+    // $db_name = "limealpaca16_test";
+    // $db_id = "limealpaca16";
+    // $db_pw = "milsakura1229";
+    // $db_host = "mysql57.limealpaca16.sakura.ne.jp";
+    // $db_table = "tk_table_1";
+
+  //Password:MAMP='root',XAMPP=''
+  $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host,$db_id,$db_pw);
 } catch (PDOException $e) {
   exit('DBConnectError:'.$e->getMessage());
 }
@@ -20,7 +34,7 @@ try {
 
 // ３．SQL文を用意(データ登録：INSERT)
 $stmt = $pdo->prepare(
-  "INSERT INTO tk_an_table(id, title, purpose, finding, todo, review1, review2)
+  "INSERT INTO $db_table(id, title, purpose, finding, todo, review1, review2)
   VALUES(NULL,:title,:purpose,:finding,:todo, :review1,:review2)"
 );
 
