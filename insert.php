@@ -19,11 +19,11 @@ try {
     $db_table = "tk_an_table";
 
     //sakura server用（gitにアップするときは削除する！）
-    // $db_name = "limealpaca16_test";
-    // $db_id = "limealpaca16";
-    // $db_pw = "milsakura1229";
-    // $db_host = "mysql57.limealpaca16.sakura.ne.jp";
-    // $db_table = "tk_table_1";
+        //   $db_name = "";
+        //   $db_id = "";
+        //   $db_pw = "";
+        //   $db_host = "";
+        //   $db_table = "";
 
   //Password:MAMP='root',XAMPP=''
   $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host,$db_id,$db_pw);
@@ -57,6 +57,6 @@ if($status==false){
   exit("ErrorMassage:".$error[2]);
 }else{
   //５．index.phpへリダイレクト
-  header('Location: lreader.php');
+  header('Location: index.php');
 }
 ?>

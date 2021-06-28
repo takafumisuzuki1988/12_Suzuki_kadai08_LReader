@@ -9,7 +9,7 @@ $id = $_GET["id"];
 
 
 //3．データ取得SQLを作成（SELECT文）
-$stmt = $pdo->prepare("SELECT * FROM tk_an_table WHERE id=:id");
+$stmt = $pdo->prepare("SELECT * FROM tk_an_table WHERE id=:id");  
 $stmt->bindValue(':id',$id,PDO::PARAM_INT);
 $status = $stmt->execute();
 
