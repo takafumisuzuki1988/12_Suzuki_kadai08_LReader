@@ -1,28 +1,12 @@
 <?php
+session_start();
 //funcsの関数を読み込む
 require_once('funcs.php');
+loginCheck();
 
-//1.  DB接続します
-try {
-  //localhost用  
-    $db_name = "tk_db";
-    $db_id = "root";
-    $db_pw = "root";
-    $db_host = "localhost";
-    $db_table = "tk_an_table";
-
-          //sakura server用（gitにアップするときは削除する！）
-        //   $db_name = "";
-        //   $db_id = "";
-        //   $db_pw = "";
-        //   $db_host = "";
-        //   $db_table = "";
-
-  //Password:MAMP='root',XAMPP=''
-  $pdo = new PDO('mysql:dbname='.$db_name.';charset=utf8;host='.$db_host,$db_id,$db_pw);
-} catch (PDOException $e) {
-  exit('DBConnectError:'.$e->getMessage());
-}
+$pdo = db_conn();
+$db_table = "tk_an_table";
+$lid = $_SESSION['lid'];
 
 //２．SQL文を用意(データ取得：SELECT)
 $stmt = $pdo->prepare("SELECT * FROM $db_table");
@@ -72,11 +56,12 @@ if($status==false) {
             <p id="main_title">L/Reader ～読むだけじゃ終われない～</p>
         </div>
         <div id="lists">
+            <p id="user_name">ようこそ<?= $lid ?>さん</p>
             <select id="book_list">
                 <?= $view ?>
             </select>
             <button id="book_list_btn">見る </button>
-            <a href="select.php"id="book_update_btn">一覧へ</a>
+            <a href="kanri_check.php"id="book_update_btn">一覧・更新へ</a>
         </div>
     </header>
     <form method="post" action="insert.php">
@@ -147,6 +132,7 @@ if($status==false) {
                         <button id="book_review2_btn" class="input_btn">登録</button>
                     </div>
                     <input id="send_btn" type="submit" value="送信">
+                    <a href="logout.php">ログイン画面へ戻る</a>
             </fieldset>
         </dl>
     </form> 

@@ -3,13 +3,14 @@
 //1.外部ファイル読み込みしてDB接続(funcs.phpを呼び出して)
 require_once('funcs.php');
 $pdo = db_conn();
+$db_table = "tk_an_table";
 
 //2.対象のIDを取得
 $id = $_GET["id"];
 
 
 //3．データ取得SQLを作成（SELECT文）
-$stmt = $pdo->prepare("SELECT * FROM tk_an_table WHERE id=:id");  
+$stmt = $pdo->prepare("SELECT * FROM $db_table WHERE id=:id");  
 $stmt->bindValue(':id',$id,PDO::PARAM_INT);
 $status = $stmt->execute();
 

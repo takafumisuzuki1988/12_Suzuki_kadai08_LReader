@@ -13,6 +13,8 @@ $id = $_POST["id"];
 // 2. DB接続します（データベース以外はワンパターン）
 require_once('funcs.php');
 $pdo = db_conn();
+$db_table = "tk_an_table";
+
 // try {
 //   //デフォルトPassword:MAMP='root',XAMPP=''
 //   $pdo = new PDO('mysql:dbname=tk_db;charset=utf8;host=localhost','root','root');
@@ -23,7 +25,7 @@ $pdo = db_conn();
 
 // ３．SQL文を用意(データ更新：UPDATE)
 $stmt = $pdo->prepare(
-  "UPDATE tk_an_table SET title=:title, purpose = :purpose,finding = :finding, todo = :todo, review1 = :review1, review2 = :review2 WHERE id = :id;"
+  "UPDATE $db_table SET title=:title, purpose = :purpose,finding = :finding, todo = :todo, review1 = :review1, review2 = :review2 WHERE id = :id;"
 );
 
 // 4. バインド変数を用意（エスケープ処理というハッキング対策を行う）
